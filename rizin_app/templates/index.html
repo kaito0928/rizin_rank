@@ -1,10 +1,65 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>top page</title>
-</head>
-<body>
-    <h1>Hello World</h1>
-</body>
-</html>
+<!doctype html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}あなたが考えるrizin rankを作れるサイト{% endblock %}
+
+{% block header %}
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+            <h1 class="mx-auto my-0 text-uppercase">rizin rank</h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">あの頃のMMAをもう一度</h2>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block contents %}
+<!-- Projects-->
+<section class="projects-section bg-light" id="projects">
+    <div class="container">
+        <!-- Featured Project Row-->
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+            <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="static/img/main_01.png" alt="" /></div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="featured-text text-center text-lg-left">
+                    <h4>このサイトについて</h4>
+                    <p class="text-black-50 mb-0">『日本の総合格闘技を盛り上げたい。』ただそれだけの気持ちで適当に作ったサイト。皆さんの考えるランキングを作り上げましょう！</p>
+                </div>
+            </div>
+        </div>
+        <!-- Project One Row-->
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+            <div class="col-lg-6"><img class="img-fluid" src="static/img/main_02.png" alt="" /></div>
+            <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <h4 class="text-white">バンタム級</h4>
+                            <p class="mb-0 text-white-50">2020年大晦日、朝倉海を破り王座に君臨した堀口恭司。強豪ひしめくバンタム級で堀口恭司を破るものは現れるのか。</p>
+                            <hr class="d-none d-lg-block mb-0 ml-0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project Two Row-->
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-6"><img class="img-fluid" src="static/img/main_03.png" alt="" /></div>
+            <div class="col-lg-6 order-lg-first">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-right">
+                            <h4 class="text-white">フェザー級</h4>
+                            <p class="mb-0 text-white-50">朝倉未来を中心に渦巻くフェザー級戦線。頭ひとつ抜き出る者は誰だ。はたまた斎藤裕王座を守り続けるのか。</p>
+                            <hr class="d-none d-lg-block mb-0 mr-0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

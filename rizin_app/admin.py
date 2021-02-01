@@ -1,3 +1,7 @@
 from django.contrib import admin
+from  .models import BantamPlayer,FeatherPlayer,BantamRank,FeatherRank
 
-# Register your models here.
+admin.site.register(BantamPlayer)
+admin.site.register(FeatherPlayer)
+admin.site.register(BantamRank)
+admin.site.register(FeatherRank)

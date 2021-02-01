@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}バンタム級ランキング一覧 | rizin app{% endblock %}
+
+{% block active_bantamrank_list %}active{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <br>
+                <br>
+                <h2 class="bantamrank-title">みんなが作ったRIZINバンタム級ランキング一覧</h2>
+                <div class="clearfix">
+                    <a href="{% url 'rizin_app:bantamrank_create' %}" class="btn btn-primary float-right">バンタム級ランキングを作成</a>
+                </div>
+                {% for bantamrank in bantamrank_list %}
+                    <div class="list_creater">作成者：{{ bantamrank.user }} | <small>{{ bantamrank.created_at }}</small></div>
+                    <table class="table">
+                        <tr>
+                            <th>ランク</th> <th>名前</th> <th>国籍</th> <th>身長</th> <th>MMA戦績(一本,KO)</th> <th>RIZIN戦績(一本,KO)</th>
+                        </tr>
+                        <tr>
+                            <td>C</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/堀口恭司">堀口恭司</a></td> <td>日本</td> <td>165cm</td> <td>29-3 (18)</td> <td>10-1 (8)</td>
+                        </tr>
+                        <tr>
+                            <td>1</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.one.name }}">{{bantamrank.one.name}}</a></td> <td>{{ bantamrank.one.nationality }}</td> <td>{{ bantamrank.one.height }}cm</td> <td>{{ bantamrank.one.mma_record }}</td> <td>{{ bantamrank.one.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>2</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.two.name }}">{{bantamrank.two.name}}</a></td> <td>{{ bantamrank.two.nationality }}</td> <td>{{ bantamrank.two.height }}cm</td> <td>{{ bantamrank.two.mma_record }}</td> <td>{{ bantamrank.two.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>3</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.three.name }}">{{bantamrank.three.name}}</a></td> <td>{{ bantamrank.three.nationality }}</td> <td>{{ bantamrank.three.height }}cm</td> <td>{{ bantamrank.three.mma_record }}</td> <td>{{ bantamrank.three.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>4</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.four.name }}">{{bantamrank.four.name}}</a></td> <td>{{ bantamrank.four.nationality }}</td> <td>{{ bantamrank.four.height }}cm</td> <td>{{ bantamrank.four.mma_record }}</td> <td>{{ bantamrank.four.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>5</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.five.name }}">{{bantamrank.five.name}}</a></td> <td>{{ bantamrank.five.nationality }}</td> <td>{{ bantamrank.five.height }}cm</td> <td>{{ bantamrank.five.mma_record }}</td> <td>{{ bantamrank.five.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>6</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.six.name }}">{{bantamrank.six.name}}</a></td> <td>{{ bantamrank.six.nationality }}</td> <td>{{ bantamrank.six.height }}cm</td> <td>{{ bantamrank.six.mma_record }}</td> <td>{{ bantamrank.six.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>7</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.seven.name }}">{{bantamrank.seven.name}}</a></td> <td>{{ bantamrank.seven.nationality }}</td> <td>{{ bantamrank.seven.height }}cm</td> <td>{{ bantamrank.seven.mma_record }}</td> <td>{{ bantamrank.seven.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>8</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.eight.name }}">{{bantamrank.eight.name}}</a></td> <td>{{ bantamrank.eight.nationality }}</td> <td>{{ bantamrank.eight.height }}cm</td> <td>{{ bantamrank.eight.mma_record }}</td> <td>{{ bantamrank.eight.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>9</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.nine.name }}">{{bantamrank.nine.name}}</a></td> <td>{{ bantamrank.nine.nationality }}</td> <td>{{ bantamrank.nine.height }}cm</td> <td>{{ bantamrank.nine.mma_record }}</td> <td>{{ bantamrank.nine.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>10</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.ten.name }}">{{bantamrank.ten.name}}</a></td> <td>{{ bantamrank.ten.nationality }}</td> <td>{{ bantamrank.ten.height }}cm</td> <td>{{ bantamrank.ten.mma_record }}</td> <td>{{ bantamrank.ten.rizin_record }}</td>
+                        </tr>
+                    </table>
+                    <br>
+                {% empty %}
+                    <p>ランキングがありません。</p>
+                {% endfor %}
+
+                {% if is_paginated %}
+                    <ul class="pagination">
+                        {% if page_odj.has_previous %}
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for page_num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == page_num %}
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">{{ page_num }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{ page_num }}" class="page-link">{{ page_num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_odj.has_next %}
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+body, #wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+}
+
+
+.sub-title {
+    margin-top: 1.5em;
+    font-size: 2em;
+}
+
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 0 1em 1em 1em;
+}

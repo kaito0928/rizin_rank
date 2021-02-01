@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}選手一覧 | rizin rank{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+{% endblock %}
+
+{% block contents %}
+    <div class="container">
+        <h1 class="sub-title">選手一覧 | バンタム級</h1>
+        <a href="{% url 'rizin_app:bantamrank_create' %}" class="btn btn-primary create-link">バンタム級ランキングを作成</a>
+        <br>
+        <div class="card-list">
+            {% for player in bantam_players %}
+                <div class="card" style="width: 10rem;">
+                    <img src="{{ player.photo.url }}" class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-text"><a href="https://jp.rizinff.com/_tags/{{ player.name }}" target="_blank" rel="noopener noreferrer">{{ player.name }}</a></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h1 class="sub-title">選手一覧 | フェザー級</h1>
+        <a href="{% url 'rizin_app:featherrank_create' %}" class="btn btn-primary create-link">フェザー級ランキングを作成</a>
+        <br>
+        <div class="card-list">
+            {% for player in feather_players %}
+                <div class="card" style="width: 10rem;">
+                    <img src="{{ player.photo.url }}" class="card-img-top">
+                    <div class="card-body">
+                    <p class="card-text"><a href="https://jp.rizinff.com/_tags/{{ player.name }}" target="_blank" rel="noopener noreferrer">{{ player.name }}</a></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
