@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rizin_app.apps.RizinAppConfig',
+
+    'django_ses',
 ]
 
 MIDDLEWARE = [
