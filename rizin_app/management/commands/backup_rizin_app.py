@@ -5,7 +5,7 @@ import os
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from ...models import BantamRank,FeatherRank
+from ...models import BantamRank,FeatherRank,RightRank
 
 
 class Command(BaseCommand):
@@ -65,6 +65,32 @@ class Command(BaseCommand):
                                  featherrank.nine,
                                  featherrank.ten,
                                  str(featherrank.created_at)])
+
+            files = os.listdir(settings.BACKUP_PATH)
+
+            if len(files) >= settings.NUM_SAVED_BACKUP:
+                files.sort()
+                os.remove(settings.BACKUP_PATH + files[0])
+
+
+            right_header = [field.name for field in RightRank._meta.fields]
+            writer.writerow(right_header)
+
+            rightranks = RightRank.objects.all()
+
+            for rightrank in rightranks:
+                writer.writerow([str(rightrank.user),
+                                 rightrank.one,
+                                 rightrank.two,
+                                 rightrank.three,
+                                 rightrank.four,
+                                 rightrank.five,
+                                 rightrank.six,
+                                 rightrank.seven,
+                                 rightrank.eight,
+                                 rightrank.nine,
+                                 rightrank.ten,
+                                 str(rightrank.created_at)])
 
             files = os.listdir(settings.BACKUP_PATH)
 

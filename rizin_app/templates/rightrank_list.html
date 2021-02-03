@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ライト級ランキング一覧 | rizin app{% endblock %}
+
+{% block active_rightrank_list %}active{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <br>
+                <br>
+                <h2 class="rightrank-title">みんなが作ったRIZINライト級ランキング一覧</h2>
+                <div class="clearfix">
+                    <a href="{% url 'rizin_app:rightrank_create' %}" class="btn btn-primary float-right">ライト級ランキングを作成</a>
+                </div>
+                {% for rightrank in rightrank_list %}
+                    <div class="list_creater">作成者：{{ rightrank.user }} | <small>{{ rightrank.created_at }}</small></div>
+                    <table class="table">
+                        <tr>
+                            <th>ランク</th> <th>名前</th> <th>国籍</th> <th>身長</th> <th>MMA戦績(一本,KO)</th> <th>RIZIN戦績(一本,KO)</th>
+                        </tr>
+                        <tr>
+                            <td>C</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/堀口恭司">堀口恭司</a></td> <td>日本</td> <td>165cm</td> <td>29-3 (18)</td> <td>10-1 (8)</td>
+                        </tr>
+                        <tr>
+                            <td>1</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ bantamrank.one.name }}">{{rightrank.one.name}}</a></td> <td>{{ rightrank.one.nationality }}</td> <td>{{ rightrank.one.height }}cm</td> <td>{{ rightrank.one.mma_record }}</td> <td>{{ rightrank.one.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>2</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.two.name }}">{{rightrank.two.name}}</a></td> <td>{{ rightrank.two.nationality }}</td> <td>{{ rightrank.two.height }}cm</td> <td>{{ rightrank.two.mma_record }}</td> <td>{{ rightrank.two.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>3</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.three.name }}">{{rightrank.three.name}}</a></td> <td>{{ rightrank.three.nationality }}</td> <td>{{ rightrank.three.height }}cm</td> <td>{{ rightrank.three.mma_record }}</td> <td>{{ rightrank.three.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>4</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.four.name }}">{{rightrank.four.name}}</a></td> <td>{{ rightrank.four.nationality }}</td> <td>{{ rightrank.four.height }}cm</td> <td>{{ rightrank.four.mma_record }}</td> <td>{{ rightrank.four.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>5</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.five.name }}">{{rightrank.five.name}}</a></td> <td>{{ rightrank.five.nationality }}</td> <td>{{ rightrank.five.height }}cm</td> <td>{{ rightrank.five.mma_record }}</td> <td>{{ rightrank.five.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>6</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.six.name }}">{{rightrank.six.name}}</a></td> <td>{{ rightrank.six.nationality }}</td> <td>{{ rightrank.six.height }}cm</td> <td>{{ rightrank.six.mma_record }}</td> <td>{{ rightrank.six.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>7</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.seven.name }}">{{rightrank.seven.name}}</a></td> <td>{{ rightrank.seven.nationality }}</td> <td>{{ rightrank.seven.height }}cm</td> <td>{{ rightrank.seven.mma_record }}</td> <td>{{ rightrank.seven.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>8</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.eight.name }}">{{rightrank.eight.name}}</a></td> <td>{{ rightrank.eight.nationality }}</td> <td>{{ rightrank.eight.height }}cm</td> <td>{{ rightrank.eight.mma_record }}</td> <td>{{ rightrank.eight.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>9</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.nine.name }}">{{rightrank.nine.name}}</a></td> <td>{{ rightrank.nine.nationality }}</td> <td>{{ rightrank.nine.height }}cm</td> <td>{{ rightrank.nine.mma_record }}</td> <td>{{ rightrank.nine.rizin_record }}</td>
+                        </tr>
+                        <tr>
+                            <td>10</td> <td><a rel="noopener noreferrer" target="_blank" href="https://jp.rizinff.com/_tags/{{ rightrank.ten.name }}">{{rightrank.ten.name}}</a></td> <td>{{ rightrank.ten.nationality }}</td> <td>{{ rightrank.ten.height }}cm</td> <td>{{ rightrank.ten.mma_record }}</td> <td>{{ rightrank.ten.rizin_record }}</td>
+                        </tr>
+                    </table>
+                    <br>
+                {% empty %}
+                    <p>ランキングがありません。</p>
+                {% endfor %}
+
+                {% if is_paginated %}
+                    <ul class="pagination">
+                        {% if page_odj.has_previous %}
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for page_num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == page_num %}
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">{{ page_num }}</a>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{ page_num }}" class="page-link">{{ page_num }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_odj.has_next %}
+                            <li class="page-item">
+                                <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

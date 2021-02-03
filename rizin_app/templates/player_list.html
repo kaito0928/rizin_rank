@@ -36,5 +36,19 @@
                 </div>
             {% endfor %}
         </div>
+
+        <h1 class="sub-title">選手一覧 | ライト級</h1>
+        <a href="{% url 'rizin_app:rightrank_create' %}" class="btn btn-primary create-link">ライト級ランキングを作成</a>
+        <br>
+        <div class="card-list">
+            {% for player in right_players %}
+                <div class="card" style="width: 10rem;">
+                    <img src="{{ player.photo.url }}" class="card-img-top">
+                    <div class="card-body">
+                    <p class="card-text"><a href="https://jp.rizinff.com/_tags/{{ player.name }}" target="_blank" rel="noopener noreferrer">{{ player.name }}</a></p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

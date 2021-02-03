@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse_lazy
 
-from ..models import BantamRank,FeatherRank
+from ..models import BantamRank,FeatherRank,RightRank
 
 
 class TestBantamrankCreateView(TestCase):
@@ -41,3 +41,22 @@ class TestFeatherrankCreateView(TestCase):
         response = self.client.post(reverse_lazy('rizin_app:featherrank_create'))
 
         self.assertFormError(response, 'form', 'one', 'このフィールドは必須です。')
+
+class TestRightrankCreateView(TestCase):
+
+    def test_create_rightrank_success(self):
+        params = {
+            'user': '作成者','one': '1位','two': '2位','three': '3位','four': '4位',
+            'five': '5位','six': '6位','seven': '7位','eight': '8位','nine': '9位','ten': '10位'
+        }
+        response = self.client.post(reverse_lazy('rizin_app:rightrank_create'),params)
+
+        self.assertRedirects(response,reverse_lazy('rizin_app:rightrank_list'))
+
+        self.assertEqual(RightRank.objects.fillter(one='1位').count(),1)
+
+    def test_create_rightrank_failure(self):
+
+        response = self.client.post(reverse_lazy('rizin_app:rightrank_create'))
+
+        self.assertFormError(response,'form','one','このフィールドは必須です。')
