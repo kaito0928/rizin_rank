@@ -22,7 +22,7 @@ def player_list(request):
 
 class BantamrankCreateView(generic.FormView):
     model = BantamRank
-    template_name = 'bantamrank_careate.html'
+    template_name = 'bantamrank_create.html'
     form_class = BantamrankCreateForm
     success_url = reverse_lazy('rizin_app:bantamrank_list')
 
@@ -39,7 +39,7 @@ class BantamrankCreateView(generic.FormView):
 
 class FeatherrankCreateView(generic.FormView):
     model = FeatherRank
-    template_name = 'featherrank_careate.html'
+    template_name = 'featherrank_create.html'
     form_class = FeatherrankCreateForm
     success_url = reverse_lazy('rizin_app:featherrank_list')
 
@@ -55,7 +55,7 @@ class FeatherrankCreateView(generic.FormView):
 
 class RightrankCreateView(generic.FormView):
     model = RightRank
-    template_name = 'rightrank_careate.html'
+    template_name = 'rightrank_create.html'
     form_class = RightrankCreateForm
     success_url = reverse_lazy('rizin_app:rightrank_list')
 
